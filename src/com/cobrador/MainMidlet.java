@@ -81,53 +81,9 @@ public class MainMidlet extends MIDlet implements CommandListener {
      */
     private void initialize() {
         // write pre-initialize user code here
-
         connectionhandler = new ConnectionHandler();
-        //try {
-            //CsvReader csvreader = new CsvReader("c:\\TEMPO4.csv", ';');
-            //System.out.println(csvreader.get(0));
-            /*CSVReader reader = new CSVReader(new FileReader("c:\\myfile.csv"));
-            String[] nextLine;
-            while ((nextLine = reader.readNext()) != null) {
-                // nextLine[] is an array of values from the line
-                System.out.println(nextLine[0] + nextLine[1] + "etc...");
-            }*/
-            // Parse the data
-            /*String[][] values = CSVParser.parse(
-                    new StringReader(
-                    "hello,world\n"
-                    + "how,are,you"));
-
-// Display the parsed data
-            for (int i = 0; i < values.length; i++) {
-                for (int j = 0; j < values[i].length; j++) {
-                    System.out.println(values[i][j]);
-                }
-                System.out.println("-----");
-            }*/
-
-
-            //getAlert().setTitle("START");
-            //getAlert().setString("STARTED");
-            //switchDisplayable(null, getAlert());
-            //RUTAS = new Rutas(connectionhandler.ReadLocalFile());
-            //SetMessage("[*] Ruta created.");
-            //SetMessage(connectionhandler.ReadLocalFile());
-            //getAlert().setTitle("END");
-            //getAlert().setString("ENDED");
-            //switchDisplayable(null, getAlert());
-        //}
-        /*catch (IOException ioex) {
-            SetMessage(ioex.toString());
-            ioex.printStackTrace();
-        }
-        catch (Exception ex) {
-            SetMessage(ex.toString());
-            ex.printStackTrace();
-        }*/
 
         // write post-initialize user code here
-        //System.out.println("INITIALIZE");
     }
     //</editor-fold>
 
@@ -137,13 +93,8 @@ public class MainMidlet extends MIDlet implements CommandListener {
      */
     public void startMIDlet() {
         // write pre-action user code here
-        //switchDisplayable(null, getListStart());
-        //fileBrowser = getFileBrowser();
-        //fileBrowser.openDir("c:/predefgallery/predeffilereceived/");
-        //fileBrowser.openDir("c:/");
-        //fileBrowser.openDir("predefgallery/");
-        //fileBrowser.openDir("predeffilereceived/");
         switchDisplayable(null, getFileBrowser());
+
         // write post-action user code here
     }
     //</editor-fold>
@@ -244,28 +195,6 @@ public class MainMidlet extends MIDlet implements CommandListener {
 
                     switchDisplayable(null, getListFechas());
                 }
-                /*if (iDevueltos>CurrFecha.GetEntregados()) {
-                getAlert().setTitle("ERROR");
-                getAlert().setString("Valor inválido para campo 'Devueltos'.");
-                getAlert().setType(AlertType.INFO);
-                switchDisplayable(null, getAlert());
-                }*/
-                //CurrFecha.SetDevueltos(iDevueltos);
-
-                /*String sFormFechaFaltantes = textFieldFaltantes.getString();
-                int iFaltantes = 0;
-                if (sFormFechaFaltantes!=null && !sFormFechaFaltantes.equalsIgnoreCase("")) {
-                iFaltantes = Integer.parseInt(sFormFechaFaltantes);
-                }
-                CurrFecha.SetFaltantes(iFaltantes);*/
-
-                //String sFormFechaVUValor = textFieldVUValor.getString();
-                /*String sFormFechaVUValor = stringItemValor.getText();
-                int iValor = 0;
-                if (sFormFechaVUValor!=null && !sFormFechaVUValor.equalsIgnoreCase("")) {
-                iValor = Integer.parseInt(sFormFechaVUValor);
-                }*/
-                //CurrFecha.SetValor(CalcFechaValor());
 
                 // write post-action user code here
 
@@ -340,21 +269,8 @@ public class MainMidlet extends MIDlet implements CommandListener {
                 // write post-action user code here
             } else if (command == backCommand) {
                 // write pre-action user code here
-                /*int iCompendio = 0;
-                enumeration = CurrExpendio.GetVectorFechas().elements();
-                while (enumeration.hasMoreElements()) {
-                    Fecha fecha = (Fecha) enumeration.nextElement();
-                    iCompendio = iCompendio+fecha.GetValor();
-                }
-                CurrExpendio.SetCompendio(iCompendio);
-                String sCompendio = Integer.toString(iCompendio);*/
-                //getAlert().setTitle("COMPENDIO");
-                //getAlert().setString("Valor total expendio: "+sCompendio);
-                //getAlert().setType(AlertType.INFO);
-                //switchDisplayable(null, getAlert());
                 switchDisplayable(null, getFormCompendio());
 
-                //switchDisplayable(null, getListExpendios());
                 // write post-action user code here
             }
         } else if (displayable == ListProducto) {
@@ -442,55 +358,6 @@ public class MainMidlet extends MIDlet implements CommandListener {
         }
 
         iIndexListExpendios = 0;
-        //}
-        return ListProducto;
-    }
-    //</editor-fold>
-
-    //<editor-fold defaultstate="collapsed" desc=" Generated Getter: ListProducto ">
-    /**
-     * Returns an initiliazed instance of ListProducto component.
-     * @return the initialized component instance
-     */
-    public List getListProducto1() {
-        //if (ListProducto == null) {
-            // write pre-init user code here
-            ListProducto = new List("PRODUCTO", Choice.IMPLICIT);
-            ListProducto.addCommand(getExitCommand());
-            ListProducto.setCommandListener(this);
-            // write post-init user code here
-            //ListProducto.append(GetMessage(), null);
-            //ListProducto.append("ITEM", null);
-        try {
-            enumeration = RUTAS.GetVectorRutas().elements();
-            //enumeration = RUTAS.VectorRutas.elements();
-            //Enumeration my_enum = RUTAS.GetVectorRutas().elements();
-            Image image = null;
-            while (enumeration.hasMoreElements()) {
-            //while (my_enum.hasMoreElements()) {
-                Ruta ruta = (Ruta) enumeration.nextElement();
-                String sProducto = ruta.GetProducto();
-                if (sProducto.equalsIgnoreCase("La Patria")) {
-                    image = Image.createImage("lapatria.png");
-
-                }
-                if (sProducto.equalsIgnoreCase("Nuevo Estadio")) {
-                    image = Image.createImage("nuevoestadio.png");
-
-                }
-                if (sProducto.equalsIgnoreCase("QHubo")) {
-                    image = Image.createImage("qhubo.png");
-
-                }
-                ListProducto.append(sProducto, image);
-            }
-        } catch (IOException ioex) {
-            SetMessage(ioex.toString());
-            ioex.printStackTrace();
-        } catch (Exception ex) {
-            SetMessage(ex.toString());
-            ex.printStackTrace();
-        }
         //}
         return ListProducto;
     }

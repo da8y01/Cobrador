@@ -36,8 +36,8 @@ public class FlowMIDlet extends MIDlet implements CommandListener {
     private TextField textFieldEntDev;
     private TextField textFieldFaltantes;
     private StringItem stringItemValor;
-    private ChoiceGroup choiceGroupCheck;
     private TextField textFieldSobrantes;
+    private ChoiceGroup choiceGroupCheck;
     private Alert Alert;
     private List ListStart;
     private TextBox textBox;
@@ -99,7 +99,7 @@ public class FlowMIDlet extends MIDlet implements CommandListener {
      */
     public void startMIDlet() {//GEN-END:|3-startMIDlet|0|3-preAction
         // write pre-action user code here
-        switchDisplayable(null, getFileBrowser());//GEN-LINE:|3-startMIDlet|1|3-postAction
+        switchDisplayable(null, getListStart());//GEN-LINE:|3-startMIDlet|1|3-postAction
         // write post-action user code here
     }//GEN-BEGIN:|3-startMIDlet|2|
     //</editor-fold>//GEN-END:|3-startMIDlet|2|
@@ -605,10 +605,11 @@ public class FlowMIDlet extends MIDlet implements CommandListener {
         if (ListStart == null) {//GEN-END:|49-getter|0|49-preInit
             // write pre-init user code here
             ListStart = new List("COBRADOR", Choice.IMPLICIT);//GEN-BEGIN:|49-getter|1|49-postInit
-            ListStart.append("Seleccionar archivo de datos", null);
+            ListStart.append("Expendios", null);
+            ListStart.append("Consignatarias", null);
             ListStart.addCommand(getExitCommand());
             ListStart.setCommandListener(this);
-            ListStart.setSelectedFlags(new boolean[] { false });//GEN-END:|49-getter|1|49-postInit
+            ListStart.setSelectedFlags(new boolean[] { false, false });//GEN-END:|49-getter|1|49-postInit
             // write post-init user code here
         }//GEN-BEGIN:|49-getter|2|
         return ListStart;
@@ -623,15 +624,19 @@ public class FlowMIDlet extends MIDlet implements CommandListener {
         // enter pre-action user code here
         String __selectedString = getListStart().getString(getListStart().getSelectedIndex());//GEN-BEGIN:|49-action|1|52-preAction
         if (__selectedString != null) {
-            if (__selectedString.equals("Seleccionar archivo de datos")) {//GEN-END:|49-action|1|52-preAction
+            if (__selectedString.equals("Expendios")) {//GEN-END:|49-action|1|52-preAction
                 // write pre-action user code here
                 switchDisplayable(null, getFileBrowser());//GEN-LINE:|49-action|2|52-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|49-action|3|49-postAction
-        }//GEN-END:|49-action|3|49-postAction
+            } else if (__selectedString.equals("Consignatarias")) {//GEN-LINE:|49-action|3|79-preAction
+                // write pre-action user code here
+                switchDisplayable(null, getFileBrowser());//GEN-LINE:|49-action|4|79-postAction
+                // write post-action user code here
+            }//GEN-BEGIN:|49-action|5|49-postAction
+        }//GEN-END:|49-action|5|49-postAction
         // enter post-action user code here
-    }//GEN-BEGIN:|49-action|4|
-    //</editor-fold>//GEN-END:|49-action|4|
+    }//GEN-BEGIN:|49-action|6|
+    //</editor-fold>//GEN-END:|49-action|6|
 
     //<editor-fold defaultstate="collapsed" desc=" Generated Getter: calcCommand ">//GEN-BEGIN:|53-getter|0|53-preInit
     /**
